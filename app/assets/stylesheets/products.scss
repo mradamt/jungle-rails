@@ -9,7 +9,7 @@ main section.categories-show {
 
     .product {
       // flex:      1;
-      max-width: 260px;
+      width: 260px;
       // so that footer within can be positioned absolutely
       position:  relative;
 
@@ -40,15 +40,27 @@ main section.categories-show {
         transition: all 0.3s;
       }
 
-      aside.price {
+      aside {
         position: absolute;
-        top: 0;
-        right: 0;
         padding: 10px;
-        background-color: #eee;
-        border-top-right-radius: 4px;
-        border-bottom-left-radius: 20px;
-        font-size: 0.8em;
+        top: 0;
+
+        &.sold-out {
+          left: 0;
+          color: white;
+          background-color: #de9898;
+          border-top-left-radius: 4px;
+          border-bottom-right-radius: 15px;
+          font-size: 0.8em;
+        }
+
+        &.price {
+          right: 0;
+          background-color: #eee;
+          border-top-right-radius: 4px;
+          border-bottom-left-radius: 20px;
+          font-size: 0.8em;
+        }
       }
 
       &:hover {
