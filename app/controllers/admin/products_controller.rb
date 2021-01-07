@@ -1,5 +1,12 @@
 class Admin::ProductsController < ApplicationController
 
+  # http_basic_authenticate_with name: ENV['USERNAME'], password: ENV['PASSWORD']
+  http_basic_authenticate_with name: "dhh", password: "secret"
+  # authenticate_or_request_with_http_basic username: "dhh", password: "secret"
+  # http_basic_authenticate_with username: "dhh", password: "secret"
+
+  before_action :authenticate
+
   def index
     @products = Product.order(id: :desc).all
   end
@@ -25,6 +32,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   private
+
+  def authenticate
+    puts "-----heyooooooo"
+    puts "name: #{ENV['NAME']}, password: #{ENV['PASSWORD']}"
+  end
 
   def product_params
     params.require(:product).permit(
