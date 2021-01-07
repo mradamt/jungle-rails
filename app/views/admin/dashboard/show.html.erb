@@ -8,13 +8,13 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Metric</th>
+        <th>Type</th>
         <th>Current number in database</th>
       </tr>
     </thead>
     <tbody>
-      <%= render 'item', thing: 'Products', count: @product_count%>
-      <%= render 'item', thing: 'Categories', count: @category_count%>
+      <%= render 'item', target: 'products', count: @product_count%>
+      <%= render 'item', target: 'categories', count: @category_count%>
     </tbody>
   </table>
 </div>
