@@ -11,7 +11,7 @@
   <td>
     <% if sale.finished? %>
       <span class="label label-danger">Finished</span>
-    <% elsif sale.pending? %>
+    <% elsif sale.upcoming? %>
       <span class="label label-warning">Upcoming</span>
     <% else %>
       <span class="label label-success">Active</span>
