@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationController
 
+  before_filter :authorize
+
   def index
     @categories = Category.order(id: :asc).all
     @num_products = Product.select(:category_id).group(:category_id).count
