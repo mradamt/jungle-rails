@@ -1,5 +1,7 @@
 class Admin::SalesController < ApplicationController
 
+  before_filter :authorize
+
   def index
     @sales = Sale.order(:ends_on).all
   end
