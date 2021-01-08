@@ -132,5 +132,44 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## SALES
+
+puts "Re-creating Sales ..."
+
+Sale.destroy_all
+
+Sale.create! ({
+  name: 'Cheap Yesterday',
+  starts_on: 30.days.ago,
+  ends_on: 20.days.ago,
+  percent_off: 5
+})
+
+Sale.create! ({
+  name: 'Cheap Today',
+  starts_on: 5.days.ago,
+  ends_on: 5.days.from_now,
+  percent_off: 15
+})
+
+Sale.create! ({
+  name: 'Cheap Tomorrow',
+  starts_on: 20.days.from_now,
+  ends_on: 30.days.from_now,
+  percent_off: 25
+})
+
+## USERS
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+User.create! ({
+  first_name: 'Dasher',
+  last_name: 'McQuade',
+  email: 'test@email.com',
+  password_digest: '$2a$10$RoXpPWMHckEyzRfV356/OeNBTN0m7CJEsMvggPrt85UUWRuHSOFOG'
+})
 
 puts "DONE!"
