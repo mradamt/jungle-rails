@@ -4,15 +4,13 @@ RSpec.describe Product, type: :model do
   
   describe 'Validations' do
 
-    before(:each) do
-      @category = Category.new(name: 'categorio')
-      @category.save
+    before :each do
+      @category = Category.create! name: 'categorio'
     end
 
     describe "Valid new product" do
       before do
-        @product = Product.new(name: 'producto', price: 100, quantity: 5, category_id: @category.id)
-        @product.save
+        @product = Product.create name: 'producto', price: 100, quantity: 5, category_id: @category.id
       end
       
       it "saves successfully" do
@@ -24,8 +22,7 @@ RSpec.describe Product, type: :model do
       
       context "missing name" do
         before do
-          @product = Product.new(name: nil, price: 100, quantity: 5, category_id: @category.id)
-          @product.save
+          @product = Product.create name: nil, price: 100, quantity: 5, category_id: @category.id
         end
         
         it "raises error 'Name can't be blank'" do
@@ -35,8 +32,7 @@ RSpec.describe Product, type: :model do
 
       context "missing price" do
         before do
-          @product = Product.new(name: 'producto', price: nil, quantity: 5, category_id: @category.id)
-          @product.save
+          @product = Product.create name: 'producto', price: nil, quantity: 5, category_id: @category.id
         end
         
         it "raises error 'Price can't be blank'" do
@@ -46,8 +42,7 @@ RSpec.describe Product, type: :model do
 
       context "missing quantity" do
         before do
-          @product = Product.new(name: 'producto', price: 100, quantity: nil, category_id: @category.id)
-          @product.save
+          @product = Product.create name: 'producto', price: 100, quantity: nil, category_id: @category.id
         end
         
         it "raises error 'Quantity can't be blank'" do
@@ -57,8 +52,7 @@ RSpec.describe Product, type: :model do
 
       context "missing category" do
         before do
-          @product = Product.new(name: 'producto', price: 100, quantity: 5, category_id: nil)
-          @product.save
+          @product = Product.create name: 'producto', price: 100, quantity: 5, category_id: nil
         end
         
         it "raises error 'Category can't be blank'" do
