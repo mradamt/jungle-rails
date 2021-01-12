@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   
   has_secure_password
 
+  # Clean user email of whitespace and convert to lowercase
   def self.clean_email(email)
     email.strip.downcase
   end
