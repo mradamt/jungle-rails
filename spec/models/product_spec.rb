@@ -3,10 +3,13 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   describe 'Validations' do
 
+    before(:each) do
+      @category = Category.new(name: 'categorio')
+      @category.save
+    end
+
     describe "Valid new product" do
       before do
-        @category = Category.new(name: 'cat')
-        @category.save
         @product = Product.new(name: 'producto', price: 100, quantity: 5, category_id: @category.id)
         @product.save
       end
@@ -20,8 +23,6 @@ RSpec.describe Product, type: :model do
       
       context "no name" do
         before do
-          @category = Category.new(name: 'cat')
-          @category.save
           @product = Product.new(name: nil, price: 100, quantity: 5, category_id: @category.id)
           @product.save
         end
@@ -33,8 +34,6 @@ RSpec.describe Product, type: :model do
 
       context "no price" do
         before do
-          @category = Category.new(name: 'cat')
-          @category.save
           @product = Product.new(name: 'producto', price: nil, quantity: 5, category_id: @category.id)
           @product.save
         end
@@ -46,8 +45,6 @@ RSpec.describe Product, type: :model do
 
       context "no quantity" do
         before do
-          @category = Category.new(name: 'cat')
-          @category.save
           @product = Product.new(name: 'producto', price: 100, quantity: nil, category_id: @category.id)
           @product.save
         end
@@ -59,8 +56,6 @@ RSpec.describe Product, type: :model do
 
       context "no category" do
         before do
-          @category = Category.new(name: 'cat')
-          @category.save
           @product = Product.new(name: 'producto', price: 100, quantity: 5, category_id: nil)
           @product.save
         end
