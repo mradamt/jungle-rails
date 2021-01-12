@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  valid_user = {first_name: 'first', last_name: 'last', email: 'test@test.com', password: 'password', password_confirmation: 'password'}
+  
   describe 'Validations' do
-
-    valid_user = {first_name: 'first', last_name: 'last', email: 'test@test.com', password: 'password', password_confirmation: 'password'}
 
     describe "valid new user" do
       before do
@@ -85,6 +85,46 @@ RSpec.describe User, type: :model do
           end
         end
       end
+    end
+  end
+
+  describe '.authenticate_with_credentials' do
+
+    before do
+      @user = User.new(valid_user)
+      @user.save
+    end
+    
+    context 'valid login' do
+
+      it "successfully authenticates a valid user login request" do
+        expect(User.authenticate_with_credentials('test@test.com', 'password')).to eq(@user)
+      end
+
+      it "successfully authenticates when email has excess whitespace around it" do
+        expect(User.authenticate_with_credentials('   test@test.com   ', 'password')).to eq(@user)
+      end
+
+      it "successfully authenticates when email is mixed case" do
+        expect(User.authenticate_with_credentials('TEST@test.COM', 'password')).to eq(@user)
+      end
+
+    end
+
+    context 'invalid login' do
+
+      it "returns nil if email not found in system" do
+        expect(User.authenticate_with_credentials('nonexistant@email.com', 'password')).to eq(nil)
+      end
+
+      it "returns nil if password is incorrect" do
+        expect(User.authenticate_with_credentials('test@test.com', 'incorrect')).to eq(nil)
+      end
+
+      it "returns nil if email not found in system" do
+        expect(User.authenticate_with_credentials('nonexistant@email.com', 'password')).to eq(nil)
+      end
+
     end
   end
 end
