@@ -5,8 +5,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # Convert email to lowercase
+    # Clean email (strip whitespace and make lowercase) before entering
     @user[:email] = User.clean_email(@user[:email])
+    # If the new entry saves without errors, begin a new session and redirect to root
     if @user.save
       session[:user_id] = @user.id
       redirect_to :root
