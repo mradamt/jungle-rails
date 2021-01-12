@@ -8,8 +8,7 @@ RSpec.describe User, type: :model do
 
     describe "valid new user" do
       before do
-        @user = User.new(valid_user)
-        @user.save
+        @user = User.create valid_user
       end
       
       it "saves successfully" do
@@ -22,8 +21,7 @@ RSpec.describe User, type: :model do
       context "missing field:" do
         
         before do
-          @user = User.new
-          @user.save
+          @user = User.create
         end
 
         it "first name raises error 'First name can't be blank'" do
@@ -50,10 +48,8 @@ RSpec.describe User, type: :model do
       context "duplicate email" do
         
         before do
-          @user1 = User.new(valid_user)
-          @user1.save
-          @user2 = User.new(email: 'TEST@test.com')
-          @user2.save
+          @user1 = User.create valid_user
+          @user2 = User.create email: 'TEST@test.com'
         end
         
         it "raises error 'email already exists in the DB'" do
@@ -65,8 +61,7 @@ RSpec.describe User, type: :model do
 
         context "fields are different" do
           before do
-            @user = User.new(password: 'one', password_confirmation: 'two')
-            @user.save
+            @user = User.create password: 'one', password_confirmation: 'two'
           end
 
           it "raises error 'Password confirmation doesn't match Password'" do
@@ -76,8 +71,7 @@ RSpec.describe User, type: :model do
                 
         context "length" do
           before do
-            @user = User.new(password: 'short', password_confirmation: 'short')
-            @user.save
+            @user = User.create password: 'short', password_confirmation: 'short'
           end
 
           it "raises error 'password must be at least 8 characters'" do
@@ -91,8 +85,7 @@ RSpec.describe User, type: :model do
   describe '.authenticate_with_credentials' do
 
     before do
-      @user = User.new(valid_user)
-      @user.save
+      @user = User.create valid_user
     end
     
     context 'valid login' do
