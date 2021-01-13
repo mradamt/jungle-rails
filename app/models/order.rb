@@ -14,13 +14,9 @@ class Order < ActiveRecord::Base
   def update_inventory
     order = LineItem.where(order_id: self.id)
     order.each do |lineItem|
-      product_id = lineItem[:product_id]
-      @product = Product.find(product_id)
-      quantity = @product[:quantity]
-      delta = quantity - lineItem[:quantity]
-      
+      @product = Product.find(lineItem[:product_id])
+      delta = @product[:quantity] - lineItem[:quantity]
       @product.update(quantity: delta)
-      byebug
     end
   end
 
