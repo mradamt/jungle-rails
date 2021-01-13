@@ -24,8 +24,22 @@ class Admin::ProductsController < Admin::BaseController
     redirect_to [:admin, :products], notice: 'Product deleted!'
   end
 
-  private
+  def add_inventory
+    product_id = params[:product_id].to_s
+    modify_inventory_delta(product_id, +1)
 
+    redirect_to :back
+  end
+
+  def remove_inventory
+    product_id = params[:product_id].to_s
+    modify_inventory_delta(product_id, -1)
+
+    redirect_to :back
+  end
+
+  private
+  
   def product_params
     params.require(:product).permit(
       :name,
@@ -35,6 +49,12 @@ class Admin::ProductsController < Admin::BaseController
       :image,
       :price
     )
+  end
+  
+  def modify_inventory_delta(product_id, delta)
+    @product = Product.find(product_id)
+    new_quantity = @product[:quantity] + delta
+    @product.update(quantity: new_quantity)
   end
 
 end

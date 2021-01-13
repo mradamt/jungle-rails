@@ -13,8 +13,9 @@
   <td>
     <%= humanized_money_with_symbol product.price %>
   </td>
-  <td>
+  <td><%= button_to admin_product_remove_inventory_path(product_id: product.id), class: 'btn btn-xs btn-secondary' do %> - <% end %>
     <%= product.quantity %>
+    <%= button_to admin_product_add_inventory_path(product_id: product.id), class: 'btn btn-xs btn-secondary' do %> + <% end %>
   </td>
   <td>
     <%= link_to fa_icon('trash'), [:admin, product], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
