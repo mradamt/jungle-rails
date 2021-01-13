@@ -52,8 +52,8 @@ RSpec.describe User, type: :model do
           @user2 = User.create email: 'TEST@test.com'
         end
         
-        it "raises error 'email already exists in the DB'" do
-          expect(@user2.errors.full_messages).to include("email address already exists")
+        it "raises error 'Email has already been taken'" do
+          expect(@user2.errors.full_messages).to include("Email has already been taken")
         end
       end
 
@@ -74,8 +74,8 @@ RSpec.describe User, type: :model do
             @user = User.create password: 'short', password_confirmation: 'short'
           end
 
-          it "raises error 'password must be at least 8 characters'" do
-            expect(@user.errors.full_messages).to include("Password must be at least 8 characters")
+          it "raises error: 'Password is too short (minimum is 8 characters)'" do
+            expect(@user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
           end
         end
       end
