@@ -5,7 +5,7 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 An admin panel is shown to all logged-in users allowing new products, categories, and sales to be added. The admin dashboard shows how many items of each are in their model. 
 
 -------------
-SCREENSHOTS
+## Screenshots
 
 ### Home page:
 !["Home page"](https://github.com/mradamt/jungle-rails/blob/master/docs/Home_page.png)
