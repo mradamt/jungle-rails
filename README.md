@@ -7,23 +7,23 @@ An admin panel is shown to all logged-in users allowing new products, categories
 -------------
 SCREENSHOTS
 
-Home page:
-https://github.com/mradamt/jungle-rails/blob/master/docs/Home_page.png "Home page"
+### Home page:
+!["Home page"](https://github.com/mradamt/jungle-rails/blob/master/docs/Home_page.png)
 
-Cart
-https://github.com/mradamt/jungle-rails/blob/master/docs/Cart.png "Cart"
+### Cart
+!["Cart"](https://github.com/mradamt/jungle-rails/blob/master/docs/Cart.png)
 
-Admin Dashboard
-https://github.com/mradamt/jungle-rails/blob/master/docs/Admin_Dashboard.png "Admin Dashboard"
+### Admin Dashboard
+!["Admin Dashboard"](https://github.com/mradamt/jungle-rails/blob/master/docs/Admin_Dashboard.png)
 
-Admin Sales
-https://github.com/mradamt/jungle-rails/blob/master/docs/Admin_Sales.png "Admin Sales"
+### Admin Sales
+!["Admin Sales"](https://github.com/mradamt/jungle-rails/blob/master/docs/Admin_Sales.png)
 
-Admin Products
-https://github.com/mradamt/jungle-rails/blob/master/docs/Admin_Products.png "Admin Products"
+### Admin Products
+!["Admin Products"](https://github.com/mradamt/jungle-rails/blob/master/docs/Admin_Products.png)
 
-About us
-https://github.com/mradamt/jungle-rails/blob/master/docs/About_us.png "About us"
+### About us
+!["About us"](https://github.com/mradamt/jungle-rails/blob/master/docs/About_us.png)
 
 --------
 
